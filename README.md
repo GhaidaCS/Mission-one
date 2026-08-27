@@ -25,8 +25,3 @@ python3 px4_mission.py
 `run_mission()` and `watchdog()` run at the same time. Whoever finishes
 first decides what happens, mission done means land normally, low
 battery means pause, cancel, and return to launch.
-## Notes
-
-- Home position has to be set before SITL starts, via env vars — QGC
-  can't change it, it just shows whatever the sim already picked.
-- If positions look off after changing home, restart SITL fresh.
