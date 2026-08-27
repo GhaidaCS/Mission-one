@@ -26,7 +26,7 @@ async def check_connection(drone: System):
             break
 
 async def watchdog(drone: System):
-    BATTERY_THREASHOLD = 0.2
+    BATTERY_THREASHOLD = 20
     async for battery in drone.telemetry.battery():
         if battery.remaining_percent < BATTERY_THREASHOLD:
             return
@@ -71,6 +71,21 @@ async def run():
 
     mission_items = []
 
+    mission_items.append(MissionItem(absolute_latitude - 10 * 1e-5,
+                                     absolute_longitude - 10 * 1e-5,
+                                     5,
+                                     5,
+                                     True,
+                                     float('nan'),
+                                     float('nan'),
+                                     MissionItem.CameraAction.NONE,
+                                     float('nan'),
+                                     float('nan'),
+                                     float('nan'),
+                                     float('nan'),
+                                     float('nan'),
+                                     MissionItem.VehicleAction.NONE))
+
     mission_items.append(MissionItem(absolute_latitude + 10 * 1e-5,
                                      absolute_longitude - 10 * 1e-5,
                                      5,
@@ -86,25 +101,50 @@ async def run():
                                      float('nan'),
                                      MissionItem.VehicleAction.NONE))
 
-    mission_items.append(MissionItem(absolute_latitude + 10 * 1e-5, absolute_longitude + 10 * 1e-5, 5, 5, True,
-                                     float('nan'), float('nan'), MissionItem.CameraAction.NONE,
-                                     float('nan'), float('nan'), float('nan'), float('nan'),
-                                     float('nan'), MissionItem.VehicleAction.NONE))
-
-    mission_items.append(MissionItem(absolute_latitude - 10 * 1e-5, absolute_longitude - 10 * 1e-5, 5, 5, True,
-                                     float('nan'), float('nan'), MissionItem.CameraAction.NONE,
-                                     float('nan'), float('nan'), float('nan'), float('nan'),
-                                     float('nan'), MissionItem.VehicleAction.NONE))
+    mission_items.append(MissionItem(absolute_latitude + 10 * 1e-5,
+                                     absolute_longitude + 10 * 1e-5,
+                                     5,
+                                     5,
+                                     True,
+                                     float('nan'),
+                                     float('nan'),
+                                     MissionItem.CameraAction.NONE,
+                                     float('nan'),
+                                     float('nan'),
+                                     float('nan'),
+                                     float('nan'),
+                                     float('nan'),
+                                     MissionItem.VehicleAction.NONE))
     
-    mission_items.append(MissionItem(absolute_latitude - 10 * 1e-5, absolute_longitude - 10 * 1e-5, 5, 5, True,
-                                     float('nan'), float('nan'), MissionItem.CameraAction.NONE,
-                                     float('nan'), float('nan'), float('nan'), float('nan'),
-                                     float('nan'), MissionItem.VehicleAction.NONE))
+    mission_items.append(MissionItem(absolute_latitude - 10 * 1e-5,
+                                     absolute_longitude + 10 * 1e-5,
+                                     5,
+                                     5,
+                                     True,
+                                     float('nan'),
+                                     float('nan'),
+                                     MissionItem.CameraAction.NONE,
+                                     float('nan'),
+                                     float('nan'),
+                                     float('nan'),
+                                     float('nan'),
+                                     float('nan'),
+                                     MissionItem.VehicleAction.NONE))
 
-    mission_items.append(MissionItem(absolute_latitude + 10 * 1e-5, absolute_longitude - 10 * 1e-5, 5, 5, True,
-                                     float('nan'), float('nan'), MissionItem.CameraAction.NONE,
-                                     float('nan'), float('nan'), float('nan'), float('nan'),
-                                     float('nan'), MissionItem.VehicleAction.NONE))
+    mission_items.append(MissionItem(absolute_latitude - 10 * 1e-5,
+                                     absolute_longitude - 10 * 1e-5,
+                                     5,
+                                     5,
+                                     True,
+                                     float('nan'),
+                                     float('nan'),
+                                     MissionItem.CameraAction.NONE,
+                                     float('nan'),
+                                     float('nan'),
+                                     float('nan'),
+                                     float('nan'),
+                                     float('nan'),
+                                     MissionItem.VehicleAction.NONE))
 
     mission_plan = MissionPlan(mission_items)
 
